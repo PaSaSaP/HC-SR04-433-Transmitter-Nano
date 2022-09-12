@@ -1,0 +1,7 @@
+.vscode/
+build/
+.DS_Store
+base.crt.h
+base.key.h
+rover.crt.h
+rover.key.h
