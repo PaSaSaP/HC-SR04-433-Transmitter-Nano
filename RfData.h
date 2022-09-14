@@ -8,8 +8,8 @@ size_t constexpr EchoPinCount = sizeof(EchoPins) / sizeof(*EchoPins);
 
 struct RfData {
   uint16_t crc;
-  uint16_t msgId;
   uint16_t results[EchoPinCount];
+  uint16_t msgId;
   uint16_t end = 0xEFEF;
 } rfData;
 

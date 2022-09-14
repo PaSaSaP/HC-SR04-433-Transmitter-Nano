@@ -24,7 +24,7 @@ void setup() {
 
 void updateCrc() {
   CRC16_restart();
-  auto data = reinterpret_cast<uint8_t const*>(&rfData.msgId);
+  auto data = reinterpret_cast<uint8_t const*>(&rfData.crc) + sizeof(rfData.crc);
   auto length = sizeof(rfData) - sizeof(rfData.crc);
   while (length--) {
     CRC16_add(*data++);
@@ -44,7 +44,7 @@ void measureDistances() {
   auto t1 = millis();
   HCSR04.measureDistanceMm(results);
   t1 = millis() - t1;
-  rfData.msgId = 0x10 + EchoPinCount;
+  rfData.msgId = 0x20 + EchoPinCount;
   for (size_t i = 0; i < EchoPinCount; ++i) {
     rfData.results[i] = results[i];
   }
